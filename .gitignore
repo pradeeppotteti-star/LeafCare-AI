@@ -1,0 +1,5 @@
+*.keras
+TRAINED_MODEL/
+__pycache__/
+*.pyc
+venv/

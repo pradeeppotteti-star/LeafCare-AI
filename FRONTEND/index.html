@@ -1,0 +1,524 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>LeafCare AI</title>
+
+    <link rel="stylesheet" href="style.css">
+
+    <!-- Font Awesome -->
+
+    <link rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+
+    <!-- jsPDF -->
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+
+</head>
+
+<body>
+
+<!-- ========================= -->
+<!-- Navigation -->
+<!-- ========================= -->
+
+<header>
+
+    <nav class="navbar">
+
+        <div class="logo">
+
+            🍅 <span>LeafCare AI</span>
+
+        </div>
+
+        <ul class="nav-links">
+
+            <li><a href="#home">Home</a></li>
+
+            <li><a href="#prediction">Prediction</a></li>
+
+            <li><a href="#features">Features</a></li>
+
+            <li><a href="#about">About</a></li>
+
+            <li><a href="#team">Team</a></li>
+
+            <li><a href="#contact">Contact</a></li>
+
+        </ul>
+
+    </nav>
+
+</header>
+
+<!-- ========================= -->
+<!-- Hero Section -->
+<!-- ========================= -->
+
+<section class="hero" id="home">
+
+    <div class="hero-content">
+
+        <h1>
+
+            AI Powered Tomato Leaf Disease Detection
+
+        </h1>
+
+        <p>
+
+            Upload a tomato leaf image and instantly receive
+            disease detection, confidence score,
+            treatment recommendation,
+            fertilizer recommendation,
+            prevention methods
+            and downloadable PDF report.
+
+        </p>
+
+        <a href="#prediction">
+
+            <button class="hero-btn">
+
+                Start Detection
+
+            </button>
+
+        </a>
+
+    </div>
+
+</section>
+
+<!-- ========================= -->
+<!-- Prediction Section -->
+<!-- ========================= -->
+
+<section
+class="prediction-section"
+id="prediction">
+
+<div class="container">
+
+<h2>
+
+🍅 Analyze Tomato Leaf
+
+</h2>
+
+<p>
+
+Upload a tomato leaf image
+or capture one using your camera.
+
+</p>
+
+<!-- Upload -->
+
+<input
+type="file"
+id="image"
+accept="image/*">
+
+<!-- Camera -->
+
+<button
+id="cameraBtn"
+type="button">
+
+📷 Open Camera
+
+</button>
+
+<!-- Camera Preview -->
+
+<video
+id="camera"
+autoplay
+playsinline
+style="display:none;">
+
+</video>
+
+<button
+id="captureBtn"
+type="button"
+style="display:none;">
+
+📸 Capture Image
+
+</button>
+
+<!-- Image Preview -->
+
+<div id="preview-container">
+
+<img
+id="preview"
+src=""
+alt="Leaf Preview">
+
+</div>
+
+<!-- Analyze -->
+
+<button
+type="button"
+onclick="predictDisease()">
+
+🔍 Analyze Leaf
+
+</button>
+
+<!-- PDF -->
+
+<button
+id="downloadBtn"
+type="button"
+style="display:none;">
+
+📄 Download PDF Report
+
+</button>
+
+<!-- Result -->
+
+<div id="result">
+
+</div>
+<!-- ========================= -->
+<!-- Prediction History -->
+<!-- ========================= -->
+
+<h2 class="history-title">
+
+🕒 Prediction History
+
+</h2>
+
+<div id="history">
+
+<p class="empty-history">
+
+No predictions yet.
+
+</p>
+
+</div>
+
+<!-- ========================= -->
+<!-- AI Statistics Dashboard -->
+<!-- ========================= -->
+
+<div class="dashboard">
+
+<h2>
+
+📊 LeafCare AI Statistics
+
+</h2>
+
+<div class="dashboard-grid">
+
+<div class="dashboard-card">
+
+<h3>Total Predictions</h3>
+
+<p id="totalPredictions">
+
+0
+
+</p>
+
+</div>
+
+<div class="dashboard-card">
+
+<h3>Healthy Leaves</h3>
+
+<p id="healthyCount">
+
+0
+
+</p>
+
+</div>
+
+<div class="dashboard-card">
+
+<h3>Diseased Leaves</h3>
+
+<p id="diseaseCount">
+
+0
+
+</p>
+
+</div>
+
+<div class="dashboard-card">
+
+<h3>Average Confidence</h3>
+
+<p id="avgConfidence">
+
+0%
+
+</p>
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+<!-- ========================= -->
+<!-- Features -->
+<!-- ========================= -->
+
+<section
+id="features"
+class="features">
+
+<h2>
+
+Why Choose LeafCare AI?
+
+</h2>
+
+<div class="feature-grid">
+
+<div class="feature-card">
+
+<i class="fa-solid fa-brain fa-3x"></i>
+
+<h3>
+
+AI Disease Detection
+
+</h3>
+
+<p>
+
+Powered by MobileNetV3 deep learning
+for fast and accurate tomato disease prediction.
+
+</p>
+
+</div>
+
+<div class="feature-card">
+
+<i class="fa-solid fa-leaf fa-3x"></i>
+
+<h3>
+
+Treatment Suggestions
+
+</h3>
+
+<p>
+
+Receive proper treatment recommendations
+based on detected disease.
+
+</p>
+
+</div>
+
+<div class="feature-card">
+
+<i class="fa-solid fa-shield-virus fa-3x"></i>
+
+<h3>
+
+Prevention Guide
+
+</h3>
+
+<p>
+
+Know how to prevent diseases
+before they spread across crops.
+
+</p>
+
+</div>
+
+<div class="feature-card">
+
+<i class="fa-solid fa-seedling fa-3x"></i>
+
+<h3>
+
+Fertilizer Recommendation
+
+</h3>
+
+<p>
+
+Get fertilizer suggestions
+to improve tomato plant health.
+
+</p>
+
+</div>
+
+</div>
+
+</section>
+<!-- ========================= -->
+<!-- About -->
+<!-- ========================= -->
+
+<section id="about" class="about">
+
+    <h2>About LeafCare AI</h2>
+
+    <div class="about-grid">
+
+        <div class="about-card">
+
+            <h3>🤖 AI Model</h3>
+
+            <p>MobileNetV3 Transfer Learning</p>
+
+        </div>
+
+        <div class="about-card">
+
+            <h3>⚙ Backend</h3>
+
+            <p>Python • Flask</p>
+
+        </div>
+
+        <div class="about-card">
+
+            <h3>💻 Frontend</h3>
+
+            <p>HTML • CSS • JavaScript</p>
+
+        </div>
+
+        <div class="about-card">
+
+            <h3>📂 Dataset</h3>
+
+            <p>PlantVillage Tomato Leaf Dataset (16,012 Images)</p>
+
+        </div>
+
+    </div>
+
+</section>
+
+<!-- ========================= -->
+<!-- Team -->
+<!-- ========================= -->
+
+<section id="team" class="team">
+
+    <h2>Project Team</h2>
+
+    <div class="team-grid">
+
+        <div class="member-card">
+
+            <h3>Potteti Pradeep</h3>
+
+            <p>AI / Machine Learning</p>
+
+        </div>
+
+        <div class="member-card">
+
+            <h3>Shaik Fazulullah</h3>
+
+            <p>Frontend Development</p>
+
+        </div>
+
+        <div class="member-card">
+
+            <h3>Puli Prabhas</h3>
+
+            <p>Backend Development</p>
+
+        </div>
+
+        <div class="member-card">
+
+            <h3>Pallam Reddy Penchala Reddy</h3>
+
+            <p>Testing & Documentation</p>
+
+        </div>
+
+    </div>
+
+</section>
+
+<!-- ========================= -->
+<!-- Footer -->
+<!-- ========================= -->
+
+<footer id="contact">
+
+    <h2>🍅 LeafCare AI</h2>
+
+    <p>
+
+        Geethanjali Institute of Science and Technology (GIST)
+
+    </p>
+
+    <p>
+
+        Department of CSE (Artificial Intelligence & Machine Learning)
+
+    </p>
+
+    <p>
+
+        Project Guide : K. Chiranjeevi
+
+    </p>
+
+    <p>
+
+        Developed by
+
+        <b>
+            Potteti Pradeep,
+            Shaik Fazulullah,
+            Puli Prabhas,
+            Pallam Reddy Penchala Reddy
+        </b>
+
+    </p>
+
+    <p>
+
+        © 2026 LeafCare AI. All Rights Reserved.
+
+    </p>
+
+</footer>
+
+<script src="script.js"></script>
+
+</body>
+
+</html>
