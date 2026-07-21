@@ -5,3 +5,4 @@ numpy
 opencv-python-headless
 Pillow
 scikit-learn
+Flask-Cors==6.0.1
